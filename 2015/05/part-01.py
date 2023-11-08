@@ -1,33 +1,28 @@
-vowels = ['a', 'e', 'i', 'o', 'u']
-forbidden = ['ab', 'cd', 'pq', 'xy']
-alphabet = list("abcdefghijklmnopqrstuvwxyz")
+import re
 
-nice_count = 0
+vowels = ('a', 'e', 'i', 'o', 'u')
+disallowed_strings = ('ab', 'cd', 'pq', 'xy')
+count = 0
+
+def nice(string):
+    for dstring in disallowed_strings:
+        if dstring in string:
+            return False
+
+    vowel_count = 0
+    for c in string:
+        if c in vowels:
+            vowel_count += 1
+
+    double_char_check = r'([a-z])\1'
+
+    return vowel_count >= 3 and re.search(double_char_check, string)
 
 with open('input.txt', 'r') as file:
     for line in file:
-        line = line.strip()
-        forbidden_found = False
-        for f in forbidden:
-            if f in line:
-                forbidden_found = True
-                break
+        if nice(line.strip()):
+            count += 1
 
-        if forbidden_found:
-            continue
+print(count)
 
-        double_found = False
-        for a in alphabet:
-            if 2 * a in line:
-                double_found = True
-                break
 
-        vowel_count = 0
-        for v in vowels:
-            if v in line:
-                vowel_count += line.count(v)
-
-        if double_found and vowel_count >= 3:
-            nice_count += 1
-
-print(nice_count)

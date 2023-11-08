@@ -7,16 +7,6 @@ Now, a nice string is one with all of the following properties:
 -   It contains a pair of any two letters that appears at least twice in the string without overlapping, like `xyxy` (`xy`) or `aabcdefgaa` (`aa`), but not like `aaa` (`aa`, but it overlaps).
 -   It contains at least one letter which repeats with exactly one letter between them, like `xyx`, `abcdefeghi` (`efe`), or even `aaa`.
 
-pair        xyxy | aa.......aa
-            aaa -- overlap, not considered
-
-            pointers at start and end
-
-flanked     xyx
-            efe
-            aaa
-
-
 For example:
 
 -   `qjhvhtzxzqqjkmpb` is nice because is has a pair that appears twice (`qj`) and a letter that repeats with exactly one letter between them (`zxz`).
