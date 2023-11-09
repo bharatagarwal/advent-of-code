@@ -1,0 +1,6 @@
+- Instead of storing a vast 2D array, store a dict with values of lights that are lit.
+- A defaultdict() with int factory would have a default value of 0.
+- Can use ^= for toggle
+- For turn on and turn off, initialise arrays and assign instead of iterating
+- [[0]\*1000]\*1000 would create 1000 copies of the [0]\*1000 object. Use list comprehension:
+    - [[0]\*1000 for _ in range(1000)] 
