@@ -11,15 +11,8 @@ with open('input.txt') as file:
         first_col.append(int(first))
         second_col.append(int(second))
 
-print(first_col[0:2])
-print(second_col[0:2])
-
-
 first_col.sort()
 second_col.sort()
-
-print(first_col[0:2])
-print(second_col[0:2])
 
 sum_of_differences = 0
 
