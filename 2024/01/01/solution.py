@@ -7,7 +7,9 @@ with open('input.txt') as file:
     for line in file:
         if line == "":
             continue
+
         first, second = re.split("\s+", line)[0:2]
+
         first_col.append(int(first))
         second_col.append(int(second))
 
