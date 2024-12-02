@@ -17,31 +17,37 @@ def remove_one(levels):
     return options
 
 
+def generate_pairs(levels):
+    pairs = []
+
+    for index, num in enumerate(levels):
+        if index == len(levels) - 1:
+            break
+
+        pairs.append([num, levels[index + 1]])
+
+    return pairs
+
+
+def maintains_order(levels):
+    asc = sorted(levels) == levels
+    dsc = sorted(levels) == levels[::-1]
+
+    return asc or dsc
+
+
 def safe_report(levels):
-    maintains_direction = levels == sorted(levels) or levels[::-1] == sorted(levels)
-
-    if maintains_direction:
-        within_acceptable_diff = True
-        pairs = []
-
-        for index, num in enumerate(levels):
-            if index == len(levels) - 1:
-                break
-
-            pairs.append([num, levels[index + 1]])
-
-        for pair in pairs:
-            diff = abs(pair[0] - pair[1])
-            if diff > max_change or diff < min_change:
-                within_acceptable_diff = False
-                break
-
-        if within_acceptable_diff:
-            return True
-        else:
-            return False
-    else:
+    if not maintains_order(levels):
         return False
+
+    pairs = generate_pairs(levels)
+
+    for pair in pairs:
+        diff = abs(pair[0] - pair[1])
+        if diff > max_change or diff < min_change:
+            return False
+
+    return True
 
 
 with open("input.txt") as file:
