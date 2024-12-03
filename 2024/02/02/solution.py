@@ -60,9 +60,7 @@ with open("input.txt") as file:
             count += 1
             continue
         else:
-            options = remove_one(levels)
-
-            for option in options:
+            for option in remove_one(levels):
                 if safe_report(option):
                     count += 1
                     break
